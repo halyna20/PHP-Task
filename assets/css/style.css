@@ -1,0 +1,21 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#app {
+    flex-grow: 1;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+.table button i {
+    color: black;
+}
+
+.table button i:hover {
+    color: red;
+}
