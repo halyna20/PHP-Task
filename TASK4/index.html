@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        button {
+            padding: 5px 18px;
+            background-color: yellow;
+            border-radius: 5px;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <td>№ п/п</td>
+                    <td>Прізвище Ім'я</td>
+                    <td>Телефон</td>
+                    <td>Відділ</td>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr v-for="item in employees">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.department}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button @click="visible=!visible">Додати співробітника</button>
+        <form v-show="visible" @submit.prevent="addEmployee">
+            <ul v-if="errors.length">
+                <li v-for="message in errors">{{message}}</li>
+            </ul>
+            <label>Прізвище та ім'я</label>
+            <input type="text" v-model="name" name="name">
+            <br>
+            <label>Телефон</label>
+            <input type="tel" v-model="phone" name="phone">
+            <br>
+            <label>Відділ</label>
+            <input type="text" v-model="department" name="department">
+            <br>
+            <button>Відправити</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
